@@ -1,0 +1,98 @@
+using System;
+using System.IO;
+
+public class CPHInline
+{
+    public bool Execute()
+    {
+        try
+        {
+            CPH.LogInfo("Checklist Script gestartet");
+
+            File.AppendAllText("H:\\debug.txt",
+                DateTime.Now + " | SCRIPT STARTED" + Environment.NewLine);
+
+            // --- ARGUMENTS CHECK ---
+            if (!args.ContainsKey("path") || !args.ContainsKey("line"))
+            {
+                CPH.LogError("FEHLER: path oder line fehlt in args");
+
+                File.AppendAllText("H:\\debug.txt",
+                    DateTime.Now + " | ERROR: missing args" + Environment.NewLine);
+
+                return false;
+            }
+
+            string path = args["path"].ToString();
+            int lineNumber = int.Parse(args["line"].ToString());
+
+            CPH.LogInfo($"Path: {path}");
+            CPH.LogInfo($"Line: {lineNumber}");
+
+            File.AppendAllText("H:\\debug.txt",
+                DateTime.Now + $" | path={path} line={lineNumber}" + Environment.NewLine);
+
+            // --- FILE CHECK ---
+            if (!File.Exists(path))
+            {
+                CPH.LogError("FEHLER: Datei nicht gefunden -> " + path);
+
+                File.AppendAllText("H:\\debug.txt",
+                    DateTime.Now + " | ERROR: file not found" + Environment.NewLine);
+
+                return false;
+            }
+
+            string[] lines = File.ReadAllLines(path);
+
+            int index = lineNumber - 1;
+
+            File.AppendAllText("H:\\debug.txt",
+                DateTime.Now + $" | index={index} lines={lines.Length}" + Environment.NewLine);
+
+            // --- SAFETY CHECK ---
+            if (index < 0 || index >= lines.Length)
+            {
+                CPH.LogError("FEHLER: Index außerhalb der Liste");
+
+                File.AppendAllText("H:\\debug.txt",
+                    DateTime.Now + " | ERROR: index out of range" + Environment.NewLine);
+
+                return false;
+            }
+
+            // --- UPDATE ---
+            string oldLine = lines[index];
+
+            if (lines[index].Contains("☐"))
+            {
+                lines[index] = lines[index].Replace("☐", "☑");
+            }
+            else if (lines[index].Contains("☑"))
+            {
+                lines[index] = lines[index].Replace("☑", "☐");
+            }
+
+            File.AppendAllText("H:\\debug.txt",
+                DateTime.Now + $" | changed: '{oldLine}' -> '{lines[index]}'" + Environment.NewLine);
+
+            File.WriteAllLines(path, lines);
+
+            CPH.LogInfo("Checklist erfolgreich aktualisiert");
+
+            File.AppendAllText("H:\\debug.txt",
+                DateTime.Now + " | SUCCESS" + Environment.NewLine);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            CPH.LogError("EXCEPTION: " + ex.Message);
+
+            File.AppendAllText("H:\\debug.txt",
+                DateTime.Now + " | EXCEPTION: " + ex.ToString() + Environment.NewLine);
+
+            return false;
+        }
+    }
+}
