@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+    background: transparent;
+    color: red;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: 32px;
+	font-weight: bold;
+}
+pre {
+    color: red;
+	font-family: "Arial Black", Arial, sans-serif;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<pre id="list"></pre>
+
+<script>
+async function loadList() {
+    const response = await fetch('./checklist.txt?t=' + Date.now());
+    const text = await response.text();
+    document.getElementById('list').textContent = text;
+}
+
+loadList();
+setInterval(loadList, 1000);
+</script>
+</body>
+</html>
