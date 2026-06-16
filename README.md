@@ -1,5 +1,5 @@
 # checkTodoList
-Eine ToDo Liste per Hotkey abhaken(oder anhacken) mittels Lokaler Textdatei, und Lokaler HTML Datei
+Eine ToDo Liste per Hotkey abhaken(oder anhacken) mittels Lokaler Textdatei, und Lokaler HTML Datei + der Verwendung von Streamer.bot
 
 Erste Schritte:
 
