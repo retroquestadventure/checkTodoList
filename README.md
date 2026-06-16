@@ -56,7 +56,7 @@ Erste Schritte:
     
     -> Also "Add" -> "Core" -> "C#" -> "Execute C# Code"
     
-    -> In das Fenster dann den Ihnhalt der Datei "toDolistCode.txt" kopieren und dann "Save and Compile" drücken.
+    -> In das Fenster dann den Ihnhalt der Datei "toDoListCode.txt" kopieren und dann "Save and Compile" drücken.
     
     -----------------------
 Der 3.te Schritt muss für jeden Hotkey wiederholt werden, aber natürlich mit anderer "line" und anderrem Hotkey
