@@ -74,6 +74,8 @@ und so weiter.
 
 Hinweiß: Wenn der Code dann mittels Hotkey gestartet wird würd ein Debugfile in "C:\" erstellt. Hier "C:\debug.txt"
 Der Name der Datei und der Pfad kann natürlich im C# Code geändert werden.
+
+Ein Beisoielbild wie es aussehen kann im Streamerbot: Streamerbot.png
    
     
    
