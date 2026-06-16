@@ -9,7 +9,7 @@ public class CPHInline
         {
             CPH.LogInfo("Checklist Script gestartet");
 
-            File.AppendAllText("H:\\debug.txt",
+            File.AppendAllText("c:\\debug.txt",
                 DateTime.Now + " | SCRIPT STARTED" + Environment.NewLine);
 
             // --- ARGUMENTS CHECK ---
@@ -17,7 +17,7 @@ public class CPHInline
             {
                 CPH.LogError("FEHLER: path oder line fehlt in args");
 
-                File.AppendAllText("H:\\debug.txt",
+                File.AppendAllText("c:\\debug.txt",
                     DateTime.Now + " | ERROR: missing args" + Environment.NewLine);
 
                 return false;
@@ -29,7 +29,7 @@ public class CPHInline
             CPH.LogInfo($"Path: {path}");
             CPH.LogInfo($"Line: {lineNumber}");
 
-            File.AppendAllText("H:\\debug.txt",
+            File.AppendAllText("c:\\debug.txt",
                 DateTime.Now + $" | path={path} line={lineNumber}" + Environment.NewLine);
 
             // --- FILE CHECK ---
@@ -37,7 +37,7 @@ public class CPHInline
             {
                 CPH.LogError("FEHLER: Datei nicht gefunden -> " + path);
 
-                File.AppendAllText("H:\\debug.txt",
+                File.AppendAllText("c:\\debug.txt",
                     DateTime.Now + " | ERROR: file not found" + Environment.NewLine);
 
                 return false;
@@ -47,7 +47,7 @@ public class CPHInline
 
             int index = lineNumber - 1;
 
-            File.AppendAllText("H:\\debug.txt",
+            File.AppendAllText("c:\\debug.txt",
                 DateTime.Now + $" | index={index} lines={lines.Length}" + Environment.NewLine);
 
             // --- SAFETY CHECK ---
@@ -55,7 +55,7 @@ public class CPHInline
             {
                 CPH.LogError("FEHLER: Index außerhalb der Liste");
 
-                File.AppendAllText("H:\\debug.txt",
+                File.AppendAllText("c:\\debug.txt",
                     DateTime.Now + " | ERROR: index out of range" + Environment.NewLine);
 
                 return false;
@@ -73,14 +73,14 @@ public class CPHInline
                 lines[index] = lines[index].Replace("☑", "☐");
             }
 
-            File.AppendAllText("H:\\debug.txt",
+            File.AppendAllText("c:\\debug.txt",
                 DateTime.Now + $" | changed: '{oldLine}' -> '{lines[index]}'" + Environment.NewLine);
 
             File.WriteAllLines(path, lines);
 
             CPH.LogInfo("Checklist erfolgreich aktualisiert");
 
-            File.AppendAllText("H:\\debug.txt",
+            File.AppendAllText("c:\\debug.txt",
                 DateTime.Now + " | SUCCESS" + Environment.NewLine);
 
             return true;
@@ -89,7 +89,7 @@ public class CPHInline
         {
             CPH.LogError("EXCEPTION: " + ex.Message);
 
-            File.AppendAllText("H:\\debug.txt",
+            File.AppendAllText("c:\\debug.txt",
                 DateTime.Now + " | EXCEPTION: " + ex.ToString() + Environment.NewLine);
 
             return false;
