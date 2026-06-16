@@ -68,7 +68,9 @@ und so weiter.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-ToDo : ReadME erweitern für OBS bzw Streamlabs OBS    
+4) Streamlabs OBS oder OBS:
+   -> Neue Browserquelle hinzufügen
+     -> "Lokale Datei" aktivieren und die HTML datei als Datei auswählen ( Beispiel: C:\checklist.html  )
     
     
    
