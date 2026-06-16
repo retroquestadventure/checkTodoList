@@ -69,7 +69,12 @@ und so weiter.
 4) Streamlabs OBS oder OBS:
    -> Neue Browserquelle hinzufügen
      -> "Lokale Datei" aktivieren und die HTML datei als Datei auswählen ( Beispiel: C:\checklist.html  )
-    
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Hinweiß: Wenn der Code dann mittels Hotkey gestartet wird würd ein Debugfile in "C:\" erstellt. Hier "C:\debug.txt"
+Der Name der Datei und der Pfad kann natürlich im C# Code geändert werden.
+   
     
    
     
